@@ -1,16 +1,20 @@
-#include "../Inc/Zombie.hpp"
-
+#include <iostream>
+#include <string>
 
 int main() {
-    int N = 5;
-    Zombie* horde = zombieHorde(N, "Raul");
+    std::string brain = "HI THIS IS BRAIN";
 
-    for (int i = 0; i < N; i++) {
-        std::cout << "[" << i << "] ";
-        horde[i].announce();
-    }
+    std::string* stringPTR = &brain;
+    std::string& stringREF = brain;
 
-    delete[] horde;
+    std::cout << "Memory address of brain      : " << &brain << std::endl;
+    std::cout << "Memory address held by PTR   : " << stringPTR << std::endl;
+    std::cout << "Memory address held by REF   : " << &stringREF << std::endl;
+
+    std::cout << "Value of brain               : " << brain << std::endl;
+    std::cout << "Value pointed to by PTR      : " << *stringPTR << std::endl;
+    std::cout << "Value referenced by REF      : " << stringREF << std::endl;
+
     return 0;
 }
 

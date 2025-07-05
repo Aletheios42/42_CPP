@@ -1,24 +1,21 @@
-BIN=Weapon
+BIN=Harl
 
 CC=c++
 CFLAGS= -std=c++98
 
 SRC_FILES= main.cpp 	\
-		   Weapon.cpp 	\
-		   HumanA.cpp 	\
-		   HumanB.cpp 	
+		   Harl.cpp
+
 SRC_DIR=./Src/
 SRC=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR=./Obj/
 OBJ=$(patsubst $(SRC_DIR)%.cpp,  $(OBJ_DIR)%.o, $(SRC))
 
-INC_FILES= Weapon.hpp 	\
-		  HumanA.hpp 	\
-		  HumanB.hpp 	
+INC_FILES= Harl.hpp 	\
+
 INC_DIR=./Inc/
 INC=$(addprefix $(INC_DIR), $(INC_FILES))
-
 
 all: $(BIN)
 
