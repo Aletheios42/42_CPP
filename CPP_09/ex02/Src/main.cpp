@@ -8,27 +8,26 @@
 #include <iomanip> // para std::fixed y std::setprecision
 
 int main(int argc, char** argv) {
-    if (argc < 2 || !*argv[1] || std::strlen(argv[1]) == 0) {
-        std::cerr << "Error: se requiere una cadena de números separados por espacios como argumento.\n";
+    if (argc < 2) {
+        std::cerr << "Error" << std::endl;
         return 1;
     }
 
-    PmergeMe pm;
+    try {
+        PmergeMe pm(argv[1]);  // Salta argv[0]
 
-    if (!pm.validate_arguments(argv[1])) {
-        std::cerr << "Error: argumentos inválidos. Deben ser enteros positivos.\n";
+        std::cout << "vector: Before: " << pm.get_vector() << std::endl;
+        std::cout << "deque: Before: " << pm.get_deque() << std::endl;
+
+        pm.benchmark("std::vector");
+        pm.benchmark("std::deque");
+
+        std::cout << "vector: After: " << pm.get_vector() << std::endl;
+        std::cout << "deque: After: " << pm.get_deque() << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Error" << std::endl;
         return 1;
     }
-
-    pm.parse_numbers(argv[1], pm.get_vector());
-    pm.get_deque() = std::deque<int>(pm.get_vector().begin(), pm.get_vector().end());
-
-    std::cout << "Before: " << pm.get_vector() << std::endl;
-
-    pm.benchmark(&PmergeMe::sort_vec, argv[1], "std::vector");
-    std::cout << "After:  " << pm.get_vector() << std::endl;
-
-    pm.benchmark(&PmergeMe::sort_deque, argv[1], "std::deque");
 
     return 0;
 }
