@@ -23,10 +23,12 @@ $(BIN): $(OBJS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 	@mkdir -p $(OBJ_DIR)
-	$(CXX) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)
+
 fclean: clean
 	rm -f $(BIN)
 
+re: fclean all

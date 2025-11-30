@@ -20,14 +20,16 @@ OBJS := $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
 all: $(BIN)
 
 $(BIN): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)
+
 fclean: clean
 	rm -f $(BIN)
 
+re: fclean all

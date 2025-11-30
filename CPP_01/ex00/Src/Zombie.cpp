@@ -5,7 +5,7 @@ Zombie::Zombie(void) :name("Default") {
         << name << std::endl;
 }
 
-Zombie::Zombie(std::string _name) :name(_name) {
+Zombie::Zombie(std::string name) :name(name) {
     std::cout << "Zombie has been created with name: "
         << name <<std::endl;
 }

@@ -12,13 +12,13 @@
 #define ERROR_MSG   "\033[31mThis is unacceptable! I want to speak to the manager now.\033[0m"
 
 class Harl {
-    public:
-        Harl();
-        ~Harl();
-        void complain( std::string level );
     private:
         void debug( void );
         void info( void );
         void warning( void );
         void error( void );
+    public:
+        Harl();
+        ~Harl();
+        void complain( std::string level );
 };

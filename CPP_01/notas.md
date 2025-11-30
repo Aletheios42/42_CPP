@@ -49,3 +49,6 @@ para leer archivos:
   }
   myReadFile.close();
 ```
+
+- switch cascada: si no pones break, se ejecutar todos en cascada y
+para evitar que el compilador de un warning hay qe poner el un comentario /* fall through */

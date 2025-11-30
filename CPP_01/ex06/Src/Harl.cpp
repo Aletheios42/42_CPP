@@ -5,26 +5,38 @@ Harl::Harl(){}
 Harl::~Harl(){}
 
 void Harl::complain(std::string level) {
-    const std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+    const std::string levels[] = { "ERROR", "WARNING", "DEBUG", "INFO", "DEFAULT"};
     void (Harl::*methods[])(void) = {
-        &Harl::debug,
-        &Harl::info,
+        &Harl::error,
         &Harl::warning,
-        &Harl::error
+        &Harl::info,
+        &Harl::debug,
+        &Harl::default_complain
     };
 
-    int idx_level = -1;
+    int idx = -1;
 
     for (int i = 0; i < 4; ++i) {
         if (levels[i] == level)
-            idx_level = i;
+            idx = i;
     }
 
-    if (idx_level == -1)
-        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-
-    for (; idx_level >= 0; idx_level--)
-        (this->*methods[idx_level])();
+switch (idx) {
+    case 0:
+        (this->*methods[0])();
+        /* fall through */
+    case 1:
+        (this->*methods[1])();
+        /* fall through */
+    case 2:
+        (this->*methods[2])();
+        /* fall through */
+    case 3:
+        (this->*methods[3])();
+        break;
+    default:
+        (this->*methods[4])();
+    }
 }
 
 void Harl::debug() {
@@ -41,4 +53,8 @@ void Harl::warning() {
 
 void Harl::error() {
     std::cout << ERROR_MSG << std::endl;
+}
+
+void Harl::default_complain() {
+    std::cout << DEFAULT_MSG << std::endl;
 }

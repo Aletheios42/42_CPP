@@ -16,14 +16,16 @@ INC := $(addprefix $(INC_DIR), $(INC_FILES))
 all: $(BIN)
 
 $(BIN): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)
+
 fclean: clean
 	rm -f $(BIN)
 
+re: fclean all
