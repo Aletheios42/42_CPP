@@ -1,7 +1,7 @@
 BIN=harlFilter
 
-CC=c++
-CFLAGS= -std=c++98
+CXX=c++
+CXXFLAGS= -Werror -Wextra -Wall -std=c++98
 
 SRC_FILES= main.cpp 	\
 		   Harl.cpp

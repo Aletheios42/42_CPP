@@ -1,6 +1,6 @@
 BIN=Zombie
-CC=c++
-CFLAGS= -std=c++98 -g3
+CXX=c++
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES = main.cpp \
             Zombie.cpp \
@@ -19,11 +19,11 @@ OBJS := $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
 all: $(BIN)
 
 $(BIN): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(CXX) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)

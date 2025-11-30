@@ -1,10 +1,11 @@
 BIN=references
-CC=c++
-CFLAGS= -std=c++98 -g3
+
+CXX=c++
+CXXFLAGS= -Werror -Wall -Wextra -std=c++98
 
 SRC_FILES = main.cpp 
-SRC := $(addprefix $(SRC_DIR), $(SRC_FILES))
 SRC_DIR=Src/
+SRC :=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR=Obj/
 OBJS := $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))

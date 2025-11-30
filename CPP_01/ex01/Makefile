@@ -1,6 +1,7 @@
-BIN=Zombie
-CC=c++
-CFLAGS= -std=c++98 -g3
+BIN=Horde
+
+CXX=c++
+CXXFLAGS= -Werror -Wall -Wextra -std=c++98
 
 SRC_FILES = main.cpp \
             Zombie.cpp \
