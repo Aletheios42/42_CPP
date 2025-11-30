@@ -4,7 +4,7 @@ Harl::Harl(){}
 
 Harl::~Harl(){}
 
-void Harl::complain(std::string level, std::string minimum) {
+void Harl::complain(std::string level) {
     const std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
     void (Harl::*methods[])(void) = {
         &Harl::debug,
@@ -14,20 +14,17 @@ void Harl::complain(std::string level, std::string minimum) {
     };
 
     int idx_level = -1;
-    int idx_minimum = -1;
 
     for (int i = 0; i < 4; ++i) {
         if (levels[i] == level)
             idx_level = i;
-        if (levels[i] == minimum)
-            idx_minimum = i;
     }
 
-    if (idx_level == -1 || idx_minimum == -1 || idx_level < idx_minimum)
-        return;
+    if (idx_level == -1)
+        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 
-    for (int i = idx_level; i < 4; ++i)
-        (this->*methods[i])();
+    for (; idx_level >= 0; idx_level--)
+        (this->*methods[idx_level])();
 }
 
 void Harl::debug() {

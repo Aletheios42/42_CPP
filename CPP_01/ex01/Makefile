@@ -4,8 +4,7 @@ CFLAGS= -std=c++98 -g3
 
 SRC_FILES = main.cpp \
             Zombie.cpp \
-            newZombie.cpp \
-            randomChump.cpp
+            newZombie.cpp
 
 SRC_DIR=Src/
 OBJ_DIR=Obj/

@@ -26,5 +26,6 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 
 clean:
 	rm -rf $(OBJ_DIR)
+
 fclean: clean
 	rm -f $(BIN)

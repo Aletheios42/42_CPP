@@ -4,30 +4,53 @@
 int main(int ac, char **av)
 {
     if (ac != 4)
+    {
+        std::cerr << "Uso: " << av[0] << " <archivo> <cadena_a_buscar> <cadena_de_reemplazo>" << std::endl;
         return 0;
+    }
 
-    std::ifstream file(av[1]);
-    if (!file.is_open())
-        return 1;
-
-    std::string nuevo_archivo = std::string(av[1]) + ".replace";
-    std::ofstream outfile(nuevo_archivo.c_str());
-    if (!outfile.is_open())
-        return 1;
-
-    std::string linea;
+    const std::string nombre_archivo = av[1];
     const std::string buscar = av[2];
     const std::string reemplazar = av[3];
 
-    while (std::getline(file, linea)) {
+    if (buscar.empty())
+    {
+        std::cerr << "Error: La cadena a buscar no puede estar vacía." << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::ifstream file(nombre_archivo.c_str());
+    if (!file.is_open())
+    {
+        std::cerr << "Error: No se pudo abrir el archivo de entrada: " << nombre_archivo << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::string nuevo_archivo = nombre_archivo + ".replace";
+
+    std::ofstream outfile(nuevo_archivo.c_str());
+    if (!outfile.is_open())
+    {
+        std::cerr << "Error: No se pudo crear el archivo de salida: " << nuevo_archivo << std::endl;
+        file.close();
+        return EXIT_FAILURE;
+    }
+
+    std::string linea;
+    
+    while (std::getline(file, linea))
+    {
         size_t pos = 0;
-        while ((pos = linea.find(buscar, pos)) != std::string::npos) {
-            linea.replace(pos, buscar.length(), reemplazar);
+        while ((pos = linea.find(buscar, pos)) != std::string::npos)
+        {
+            linea.erase(pos, buscar.length());
+            linea.insert(pos, reemplazar);
             pos += reemplazar.length();
         }
         outfile << linea << "\n";
     }
 
+    file.close(); 
+    outfile.close(); 
     return 0;
 }
-

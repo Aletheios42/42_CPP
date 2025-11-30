@@ -1,16 +1,16 @@
 #include "../Inc/HumanB.hpp"
 
 HumanB::HumanB() {
-    std::cout << "HumanB creado";
+    std::cout << "HumanB creado" << std::endl;
 }
 
 HumanB::HumanB(std::string _name) : name(_name) {
-    std::cout << "HumanB creado"
+    std::cout << "HumanB creado "
         << weapon.getType() << std::endl;
 }
 
 HumanB::~HumanB() {
-    std::cout << "HumanB destruido";
+    std::cout << "HumanB destruido" << std::endl;
 }
 
 void HumanB::attack() {

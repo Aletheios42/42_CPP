@@ -15,7 +15,7 @@ class Harl {
     public:
         Harl();
         ~Harl();
-        void complain( std::string level, std::string minimun);
+        void complain( std::string level);
     private:
         void debug( void );
         void info( void );

@@ -11,6 +11,8 @@ class Zombie {
         Zombie(std::string _name);
         void announce(void);
         ~Zombie();
+
+        void setName(std::string _name);
 };
 
 Zombie	*newZombie(std::string name);

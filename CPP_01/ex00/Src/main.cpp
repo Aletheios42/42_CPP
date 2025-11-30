@@ -1,6 +1,5 @@
 #include "../Inc/Zombie.hpp"
 
-
 int main(void) {
 
     Zombie z1;
@@ -11,6 +10,6 @@ int main(void) {
     z1.announce();
     z2.announce();
 
-    z3->~Zombie();
+    delete(z3);
     return 0;
 }
