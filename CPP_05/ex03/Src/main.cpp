@@ -12,7 +12,7 @@
 
 int main()
 {
-	std::srand(std::time(NULL)); // Inicializa la semilla para la función rand() una sola vez.
+	std::srand(std::time(NULL));
 
 	try
 	{
@@ -22,9 +22,8 @@ int main()
 		AForm *shru = doomer.makeForm("shrubbery creation", target);
 		AForm *robo = doomer.makeForm("robotomy request", target);
 		AForm *pres = doomer.makeForm("presidential pardon", target);
-		AForm *unkn = doomer.makeForm("phone call", target); // <- Esto va a ser NULL.
+		AForm *unkn = doomer.makeForm("phone call", target);
 
-		// Firmar y ejecutar solo si los formularios existen.
 		if (shru)
 		{
 			god.signForm(*shru);
@@ -49,7 +48,6 @@ int main()
 			god.executeForm(*unkn);
 		}
 
-		// Limpieza.
 		delete shru;
 		delete robo;
 		delete pres;

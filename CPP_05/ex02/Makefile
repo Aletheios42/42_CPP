@@ -1,7 +1,7 @@
 BIN = DiferentForms
 
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR = ./Src/
 SRC_FILES = main.cpp \
@@ -10,10 +10,10 @@ SRC_FILES = main.cpp \
 			PresidentialPardonForm.cpp \
 			RobotomyRequestForm.cpp \
 			ShrubberyCreationForm.cpp
-SRC := $(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
-OBJ_DIR = ./Objs/
-OBJ := $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
+OBJ_DIR= ./Objs/
+OBJ= $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
 
 INC_DIR = ./Inc/
 INC_FILES = Bureaucrat.hpp \
@@ -21,7 +21,7 @@ INC_FILES = Bureaucrat.hpp \
 			PresidentialPardonForm.hpp \
 			RobotomyRequestForm.hpp \
 			ShrubberyCreationForm.hpp
-INC := $(addprefix $(INC_DIR), $(INC_FILES))
+INC= $(addprefix $(INC_DIR), $(INC_FILES))
 
 all: $(BIN)
 
@@ -37,6 +37,8 @@ clean:
 
 fclean: clean
 	rm -f $(BIN)
-
+	
 re: fclean all
 
+leaks: all
+	valgrind --leak-check=full ./$(BIN)

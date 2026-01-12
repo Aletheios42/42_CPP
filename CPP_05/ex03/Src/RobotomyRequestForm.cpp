@@ -1,12 +1,12 @@
 #include "../Inc/RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm() 
-    :AForm("DefaultPresidential", 25, 5), _target("Deafualt") {
+    :AForm("DefaultPresidential", 72, 45), _target("Deafualt") {
         std::cout << "Defualt Constructor was called" << std::endl;
     }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target) 
-    :AForm("DefaultPresidential", 25, 5), _target(target) {
+    :AForm("DefaultPresidential", 72, 45), _target(target) {
         std::cout << "Name Constructor was called" << std::endl;
     }
 
@@ -33,6 +33,15 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw GradeTooLowException();
 	if (!this->getSigned())
 		throw UnsignedFormException();
-	
-	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+   
+    std::cout << "* Vrrrrrrrrrrrr... BZZZZZZT... CRRRRRRR! *" << std::endl;
+
+    if (std::rand() % 2 == 0)
+    {
+        std::cout << this->_target << " has been robotomized successfully!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Robotomy failed for " << this->_target << "." << std::endl;
+    }
 }

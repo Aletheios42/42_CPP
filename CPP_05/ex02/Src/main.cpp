@@ -10,7 +10,7 @@
 
 int main()
 {
-	// std::srand(std::time(NULL)); // Inicializa la semilla para rand() una sola vez
+	std::srand(std::time(NULL));
 
     try
 	{

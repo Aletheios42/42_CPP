@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include "AForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 class RobotomyRequestForm : public AForm {
 
@@ -13,7 +15,6 @@ class RobotomyRequestForm : public AForm {
         RobotomyRequestForm(const RobotomyRequestForm &other);
         RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
         virtual ~RobotomyRequestForm();
-
-        
+    
         virtual void execute(Bureaucrat const & executor) const;
 };

@@ -18,30 +18,26 @@ int main(void)
 	
 	try
 	{
-		Bureaucrat llados("Llados", 1);
-		std::cout << llados << std::endl;
+		Bureaucrat ramon("ramon", 1);
+		std::cout << ramon << std::endl;
 		for (size_t i = 0; i < 149; i++)
-			llados.decrementGrade();
-		std::cout << llados << std::endl;
-		llados.decrementGrade();
-		// Al lanzarse la excepción al llegar a 151
-		// no se ejecuta lo siguiente, saltando al "catch".
-		std::cout << llados << std::endl;
+			ramon.decrementGrade();
+		std::cout << ramon << std::endl;
+		ramon.decrementGrade();
+		std::cout << ramon << std::endl;
 	}
 	catch(const std::exception &e)
 	{
-		// Como se lanzó una excepción, el "catch" la captura
-		// y se ejecuta el código dentro a su alcance (scope).
 		std::cout << e.what() << std::endl;
 	}
 	
 	try
 	{
-		Bureaucrat panza("Panza", 42);
+		Bureaucrat manuel("manuel", 42);
 		Bureaucrat npc("NPC", 142);
 		Bureaucrat unk(npc);
-		Bureaucrat nown = panza;
-		npc = panza;
+		Bureaucrat nown = manuel;
+		npc = manuel;
 		npc.incrementGrade();
 		std::cout << npc << std::endl;
 		std::cout << unk << std::endl;

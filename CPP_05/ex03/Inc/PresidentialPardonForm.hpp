@@ -13,7 +13,6 @@ class PresidentialPardonForm : public AForm {
         PresidentialPardonForm(const PresidentialPardonForm &other);
         PresidentialPardonForm& operator=(const PresidentialPardonForm& rhs);
         virtual ~PresidentialPardonForm();
-
-        
+     
         virtual void execute(Bureaucrat const & executor) const;
 };

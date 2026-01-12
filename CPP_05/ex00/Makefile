@@ -1,19 +1,19 @@
-BIN=Burocrata
+BIN=Bureaucrat
 
 CC= c++
-CFLAGS= -std=c++98
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR=./Src/
 SRC_FILES=main.cpp				\
 		  Bureaucrat.cpp
-SRC:=$(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR=./Objs/
-OBJ:=$(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
+OBJ=$(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
 
 INC_DIR=./Inc/
 INC_FILES=Bureaucrat.hpp
-INC:=$(addprefix $(INC_DIR), $(INC_FILES))
+INC=$(addprefix $(INC_DIR), $(INC_FILES))
 
 all: $(BIN)
 
@@ -29,3 +29,8 @@ clean:
 
 fclean: clean
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./$(BIN)

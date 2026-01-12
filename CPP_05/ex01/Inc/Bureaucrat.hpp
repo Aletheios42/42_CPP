@@ -23,6 +23,10 @@ class Bureaucrat {
         std::string getName() const;
         int getGrade() const;
 
+		void setGrade(int grade);
+		void setName(const std::string &name);
+
+
 		class GradeTooHighException : public std::exception
 		{
 			public:

@@ -1,17 +1,25 @@
 #include "../Inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
+    if (_grade < 1)
+        throw GradeTooHighException();
+    if (_grade > 150)
+        throw GradeTooLowException();
     std::cout << "Default constructor was called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, const int grade)
     : _name(name),_grade(grade) {
-    std::cout << "Default constructor was called" << std::endl;
+     if (_grade < 1)
+        throw GradeTooHighException();
+    if (_grade > 150)
+        throw GradeTooLowException();
+    std::cout << "Name constructor was called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat)
     : _name(bureaucrat._name),_grade(bureaucrat._grade) {
-    std::cout << "Default constructor was called" << std::endl;
+    std::cout << "Copy constructor was called" << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat& bureaucrat) {
@@ -21,6 +29,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat& bureaucrat) {
     }
     return *this;
 }
+
 Bureaucrat::~Bureaucrat() {
     std::cout << "Default Destructor was called" << std::endl;
 }
@@ -43,6 +52,18 @@ std::string Bureaucrat::getName() const {
 
 int Bureaucrat::getGrade() const {
     return _grade;
+}
+
+void Bureaucrat::setGrade(int grade) {
+    if (grade < 1)
+        throw GradeTooHighException();
+    if (grade > 150)
+        throw GradeTooLowException();
+    _grade = grade;
+}
+
+void Bureaucrat::setName(const std::string &name) {
+    _name = name;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {

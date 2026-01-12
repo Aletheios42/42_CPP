@@ -1,7 +1,7 @@
 BIN = Intern 
 
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR = ./Src/
 SRC_FILES = main.cpp 						\
@@ -11,10 +11,10 @@ SRC_FILES = main.cpp 						\
 			RobotomyRequestForm.cpp 		\
 			ShrubberyCreationForm.cpp		\
 			Intern.cpp
-SRC := $(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR = ./Objs/
-OBJ := $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
+OBJ= $(patsubst $(SRC_DIR)%.cpp, $(OBJ_DIR)%.o, $(SRC))
 
 INC_DIR = ./Inc/
 INC_FILES = Bureaucrat.hpp 					\
@@ -23,7 +23,7 @@ INC_FILES = Bureaucrat.hpp 					\
 			RobotomyRequestForm.hpp 		\
 			ShrubberyCreationForm.hpp		\
 			Intern.hpp
-INC := $(addprefix $(INC_DIR), $(INC_FILES))
+INC= $(addprefix $(INC_DIR), $(INC_FILES))
 
 all: $(BIN)
 
@@ -42,3 +42,5 @@ fclean: clean
 
 re: fclean all
 
+leaks: all
+	valgrind --leak-check=full ./$(BIN)
