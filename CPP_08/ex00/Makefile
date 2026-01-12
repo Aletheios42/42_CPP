@@ -1,7 +1,7 @@
 BIN=EasyFind
 
 CC=c++
-CFLAGS= -std=c++98
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR=./Src/
 SRC_FILES=main.cpp
@@ -28,3 +28,8 @@ clean:
 
 fclean:
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./$(BIN)

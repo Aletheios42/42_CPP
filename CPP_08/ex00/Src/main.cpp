@@ -17,7 +17,7 @@ int main() {
         int idx = easyfind(v, 99);
         std::cout << "Found 99 at index " << idx << '\n';
     } catch (const std::exception& e) {
-        std::cerr << "Value not found: " << e.what() << '\n';
+        std::cerr << e.what() << '\n';
     }
 
     return 0;
