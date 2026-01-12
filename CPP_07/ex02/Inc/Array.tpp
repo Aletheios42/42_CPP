@@ -1,5 +1,5 @@
 #include <cstddef>
-#include <new>  // para std::bad_alloc
+#include <new>
 
 template <typename T>
 Array<T>::Array() : _data(NULL), _size(0) {}
@@ -10,7 +10,7 @@ Array<T>::Array(unsigned int n) : _data(NULL), _size(n) {
         _data = NULL;
         return;
     }
-    _data = new T[n]();  // inicializa por defecto
+    _data = new T[n]();
 }
 
 template <typename T>
