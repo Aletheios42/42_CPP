@@ -19,10 +19,17 @@ WrongAnimal::~WrongAnimal() {
     std::cout << "Destructor WrongAnimal called" << std::endl;
 }
 
-std::string WrongAnimal::getType() const {
-    return _type;
+std::string const	&WrongAnimal::getType() const
+{
+	return(this->_type);
 }
 
-void WrongAnimal::makeSound() const {
-    std::cout << "*generic WrongAnimal noise*" << std::endl;
+void	WrongAnimal::setType(const std::string &type)
+{
+	this->_type = type;
+}
+
+void	WrongAnimal::makeSound() const
+{
+	std::cout << "**Wrong default sound**" << std::endl;
 }

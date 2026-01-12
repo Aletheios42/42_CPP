@@ -1,5 +1,5 @@
 #include "../Inc/AMateria.hpp"
-#include "../Inc/ICharacter.hpp"  // o la ruta real a ICharacter.hpp
+#include "../Inc/ICharacter.hpp"
 
 AMateria::AMateria() :_type(0) {
     std::cout << "AMateria Defualt Constructor hass been called" << std::endl;
@@ -28,7 +28,6 @@ AMateria::~AMateria() {
 std::string const & AMateria::getType() const {
     return _type;
 }
-
 
 void AMateria::use(ICharacter& target) {
     std::cout << "AMateria base use called on " << target.getName() << std::endl;

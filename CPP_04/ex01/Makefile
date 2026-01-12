@@ -1,16 +1,13 @@
-BIN=Animal
+BIN=Brain
 
 CC=c++
-CFLAGS= -std=c++98
-CFLAGS += -g3
+CFLAGS= -Wall -Wextra -Werror -std=c++98 -g
 
 SRC_DIR=./Src/
 SRC_FILES= main.cpp			\
 		   Animal.cpp		\
 		   Dog.cpp			\
 		   Cat.cpp			\
-		   WrongAnimal.cpp	\
-		   WrongCat.cpp		\
 		   Brain.cpp
 SRC=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
@@ -21,8 +18,6 @@ INC_DIR=./Inc/
 INC_FILES= Animal.hpp		\
 		   Dog.hpp			\
 		   Cat.hpp			\
-		   WrongAnimal.hpp	\
-		   WrongCat.hpp		\
 		   Brain.hpp
 INC=$(addprefix $(INC_DIR), $(INC_FILES))
 
@@ -40,3 +35,8 @@ clean:
 
 fclean: clean
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./Brain

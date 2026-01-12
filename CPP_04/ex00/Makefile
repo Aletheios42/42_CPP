@@ -1,7 +1,7 @@
 BIN=Animal
 
 CC=c++
-CFLAGS= -std=c++98
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES= main.cpp		\
 		   Animal.cpp	\
@@ -37,3 +37,8 @@ clean:
 
 fclean: clean
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./Animal

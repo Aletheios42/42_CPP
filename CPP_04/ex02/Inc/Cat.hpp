@@ -1,19 +1,22 @@
 #pragma once
 
-#include "../Inc/A_Animal.hpp"
-#include "../Inc/Brain.hpp"
 #include <iostream>
+#include "../Inc/Animal.hpp"
+#include "../Inc/Brain.hpp"
 
-class Cat : public A_Animal, public Brain {
+class Cat : public Animal
+{
+	private:
+		Brain*	_brain;
 
-    private:
-        Brain *_brain;
-    public:
-        Cat();
+	public:
+		Cat();
+		Cat(const Cat& other);
         Cat(const std::string& type);
-        Cat(const Cat& other);
-        Cat& operator=(const Cat& other);
-        ~Cat();
+		Cat& operator=(const Cat& other);
+		~Cat();
 
-        void makeSound() const;
+		void	makeSound() const;
+		void	setBrain(const Brain& brain);
+		Brain&	getBrain() const;
 };

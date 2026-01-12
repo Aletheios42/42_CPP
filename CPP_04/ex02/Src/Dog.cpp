@@ -1,35 +1,43 @@
 #include "../Inc/Dog.hpp"
 
-Dog::Dog() : A_Animal("Dog") {
+Dog::Dog() : Animal("Dog") {
     std::cout << "Constructor por defecto Dog called" << std::endl;
-    _brain = new Brain();
+    this->_brain = new Brain();
 }
 
-Dog::Dog(const std::string& type) : A_Animal(type) {
+Dog::Dog(const std::string& type) : Animal(type) {
     std::cout << "Constructor por de copia Dog called" << std::endl;
-    _brain = new Brain();
 }
 
-Dog::Dog(const Dog& other) : A_Animal(other) {
-    std::cout << "Constructor por copia Dog called" << std::endl;
-    _brain = new Brain(*other._brain);  // copia profunda
+Dog::Dog(const Dog& other) :	Animal(other),
+								_brain(new Brain(*other._brain))
+{
+	std::cout <<  "Dog Copy Constructor called" << std::endl;
 }
 
 Dog& Dog::operator=(const Dog& other) {
     if (this != &other) {
-        A_Animal::operator=(other);  // asegura copia correcta del base
-        if (_brain)
-            delete _brain;
-        _brain = new Brain(*other._brain); // copia profunda
+        _type = other._type;
+        _brain = other._brain;
     }
     return *this;
 }
 
 Dog::~Dog() {
     std::cout << "Destructor Dog called" << std::endl;
-    delete _brain;
+    delete(this->_brain);
 }
 
 void Dog::makeSound() const {
     std::cout << "Woof!" << std::endl;
+}
+
+void	Dog::setBrain(const Brain& brain)
+{
+	*this->_brain = brain;
+}
+
+Brain& Dog::getBrain() const
+{
+	return(*this->_brain);
 }

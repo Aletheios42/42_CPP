@@ -1,8 +1,6 @@
 #include "../Inc/Animal.hpp"
-#include "../Inc/WrongAnimal.hpp"
 #include "../Inc/Dog.hpp"
 #include "../Inc/Cat.hpp"
-#include "../Inc/WrongCat.hpp"
 #include "../Inc/Brain.hpp"
 
 int main(void)
@@ -33,11 +31,12 @@ int main(void)
 
     // Copia profunda
     Dog d1;
-    d1.setIdeas(0, "I want a bone!");
-    Dog d2 = d1;  // Overloaded copy constructor
+    d1.getBrain().setIdeas(0, "I want a bone!");
+    Dog d2 = d1;
 
-    std::cout << "Dog 1 idea: " << d1.getIdeas(0) << std::endl;
-    std::cout << "Dog 2 idea: " << d2.getIdeas(0) << std::endl;
+    std::cout << "Dog 1 idea: " << d1.getBrain().getIdeas(0) << std::endl;
+    std::cout << "Dog 2 idea: " << d2.getBrain().getIdeas(0) << std::endl;
 
     return 0;
 }
+

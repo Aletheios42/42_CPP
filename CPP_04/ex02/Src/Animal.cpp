@@ -23,6 +23,11 @@ std::string Animal::getType() const {
     return _type;
 }
 
+void	Animal::setType(const std::string &type)
+{
+	this->_type = type;
+}
+
 void Animal::makeSound() const {
     std::cout << "*generic animal noise*" << std::endl;
 }
