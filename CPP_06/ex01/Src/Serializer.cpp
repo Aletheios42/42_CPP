@@ -1,17 +1,11 @@
 #include "../Inc/Serializer.hpp"
 
-// Constructor por defecto (privado)
-Serializer::Serializer() {}
-
-// Destructor (privado)
 Serializer::~Serializer() {}
 
-// Constructor copia (privado)
 Serializer::Serializer(const Serializer& other) {
     (void)other;
 }
 
-// Operador asignación (privado)
 Serializer& Serializer::operator=(const Serializer& other) {
     (void)other;
     return *this;

@@ -2,14 +2,14 @@
 
 #include <iostream>
 
-#include <cstdlib>   // para srand, rand
-#include <ctime>     // para time
-#include <iostream>  // para std::cout
-#include <exception> // para std::bad_cast
+#include <cstdlib> 
+#include <ctime>
+#include <iostream>
+#include <exception>
 
 class Base {
 public:
-    virtual ~Base(); // ← virtual
+    virtual ~Base();
 };
 
 Base* generate();

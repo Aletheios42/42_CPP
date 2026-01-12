@@ -2,9 +2,9 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib>   // strtol, strtof, strtod
-#include <cerrno>    // errno
-#include <climits>   // LONG_MIN, LONG_MAX
+#include <cstdlib>
+#include <cerrno>
+#include <climits>
 
 class ScalarConverter {
 

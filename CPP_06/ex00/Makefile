@@ -1,19 +1,19 @@
 BIN=convert
 
 CC=c++
-CFLAGS= -std=c++98
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_DIR=./Src/
 SRC_FILES=main.cpp				\
 		  ScalarConverter.cpp
-SRC:=$(addprefix $(SRC_DIR), $(SRC_FILES))
+SRC=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR=./Obj/
-OBJ:=$(patsubst $(OBJ_DIR)%.o, $(SRC_DIR)%.cpp, $(SRC))
+OBJ=$(patsubst $(OBJ_DIR)%.o, $(SRC_DIR)%.cpp, $(SRC))
 
 INC_DIR=./Inc/
 INC_FILES=ScalarConverter.hpp
-INC:=$(addprefix $(INC_DIR), $(INC_FILES))
+INC=$(addprefix $(INC_DIR), $(INC_FILES))
 
 all: $(BIN)
 
@@ -29,3 +29,8 @@ clean:
 
 fclean:
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./$(BIN)

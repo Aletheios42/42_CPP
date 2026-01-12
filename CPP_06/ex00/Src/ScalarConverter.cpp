@@ -9,30 +9,28 @@ ScalarConverter::LiteralType ScalarConverter::detectType(const std::string& s) {
     if (s.length() == 1 && !isdigit(s[0]))
         return TYPE_CHAR;
 
-    // Check special literals: nan, +inf, -inf, nanf, +inff, -inff
     if (s == "nan" || s == "+inf" || s == "-inf" || s == "inf" ||
         s == "nanf" || s == "+inff" || s == "-inff" || s == "inff")
         return TYPE_SPECIAL;
 
     char* endptr;
 
-    // Check int
     errno = 0;
     long val = strtol(s.c_str(), &endptr, 10);
     if (*endptr == '\0' && errno == 0 && val <= INT_MAX && val >= INT_MIN)
         return TYPE_INT;
 
-    // Check float (must end with 'f')
     if (s[s.length()-1] == 'f') {
         errno = 0;
         float fval = strtof(s.c_str(), &endptr);
+        (void)fval;
         if (*(endptr) == 'f' && *(endptr+1) == '\0' && errno == 0)
             return TYPE_FLOAT;
     }
 
-    // Check double
     errno = 0;
     double dval = strtod(s.c_str(), &endptr);
+    (void)dval; 
     if (*endptr == '\0' && errno == 0)
         return TYPE_DOUBLE;
 
@@ -68,7 +66,6 @@ void ScalarConverter::parseInt(const std::string& s) {
 }
 
 void ScalarConverter::parseFloat(const std::string& s) {
-    // Remove trailing 'f'
     std::string trimmed = s.substr(0, s.length() - 1);
     char* endptr;
     errno = 0;
