@@ -1,7 +1,7 @@
 BIN = PmergeMe 
 
 CC = c++
-CFLAGS = -std=c++98
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 ifeq ($(SANITIZE),1)
 	CFLAGS += -g3 -fsanitize=address
@@ -37,3 +37,8 @@ clean:
 
 fclean: clean
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./$(BIN)

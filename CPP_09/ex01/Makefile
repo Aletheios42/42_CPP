@@ -1,7 +1,7 @@
 BIN =  RPN
 
 CC = c++
-CFLAGS = -std=c++98
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 ifeq ($(SANITIZE),1)
 	CFLAGS += -g3 -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer
@@ -36,3 +36,25 @@ clean:
 
 fclean: clean
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./$(BIN)
+
+test: all
+	@echo "--- Test 1: Básicos (3+4)*2 ---"
+	@echo "Esperado: 14"
+	./$(BIN) "3 4 + 2 *"
+
+	@echo "\n--- Test 2: División y Resta (9/3)-2 ---"
+	@echo "Esperado: 1"
+	./$(BIN) "9 3 / 2 -"
+
+	@echo "\n--- Test 3: Multiplicación con resultado grande (8*9) ---"
+	@echo "Esperado: 72"
+	./$(BIN) "8 9 *"
+
+	@echo "\n--- Test 4: Operaciones anidadas 5 + ((1+2)*4) - 3 ---"
+	@echo "Esperado: 14"
+	./$(BIN) "5 1 2 + 4 * + 3 -"

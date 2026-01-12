@@ -1,7 +1,7 @@
 BIN = Btc
 
 CC = c++
-CFLAGS = -std=c++98
+CFLAGS= -Wall -Wextra -Werror -std=c++98
 
 ifeq ($(SANITIZE),1)
 	CFLAGS += -g3 -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer
@@ -36,3 +36,8 @@ clean:
 
 fclean: clean
 	rm -f $(BIN)
+
+re: fclean all
+
+leaks: all
+	valgrind --leak-check=full ./$(BIN)

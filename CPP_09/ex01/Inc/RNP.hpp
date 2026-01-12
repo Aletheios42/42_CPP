@@ -20,5 +20,4 @@ private:
     void applyOperator(char op);
 };
 
-#endif // RPN_HPP
-
+#endif
