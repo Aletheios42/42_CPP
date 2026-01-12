@@ -4,8 +4,8 @@
 //     std::cout << "Creando humanoA default" << std::endl;
 // }
 
-HumanA::HumanA(std::string _name, Weapon &_weapon)
-    : name(_name), weapon(_weapon) {
+HumanA::HumanA(std::string name, Weapon &weapon)
+    : _weapon(weapon), _name(name) {
          std::cout << "Creando humanoA" << std::endl;
 }
 HumanA::~HumanA() {
@@ -13,6 +13,6 @@ HumanA::~HumanA() {
 }
 
 void HumanA::attack() {
-    std::cout << name << " attacks with their " 
-        << weapon.getType() << std::endl;
+    std::cout << _name << " attacks with their " 
+        << _weapon.getType() << std::endl;
 }

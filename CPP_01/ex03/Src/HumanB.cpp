@@ -4,9 +4,9 @@ HumanB::HumanB() {
     std::cout << "HumanB creado" << std::endl;
 }
 
-HumanB::HumanB(std::string _name) : name(_name) {
+HumanB::HumanB(std::string name) : _name(name) {
     std::cout << "HumanB creado "
-        << weapon.getType() << std::endl;
+        << _weapon.getType() << std::endl;
 }
 
 HumanB::~HumanB() {
@@ -14,10 +14,10 @@ HumanB::~HumanB() {
 }
 
 void HumanB::attack() {
-    std::cout << name << " attacks with their " 
-        << weapon.getType() << std::endl;
+    std::cout << _name << " attacks with their " 
+        << _weapon.getType() << std::endl;
 }
 
-void HumanB::setWeapon(Weapon _weapon) {
-    weapon = _weapon;
+void HumanB::setWeapon(Weapon weapon) {
+    _weapon = weapon;
 }

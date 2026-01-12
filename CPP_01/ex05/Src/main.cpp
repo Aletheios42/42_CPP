@@ -1,7 +1,7 @@
 #include "../Inc/Harl.hpp"
 
 
-int main(int ac, char **av)
+int main()
 {
 
     Harl harl;
