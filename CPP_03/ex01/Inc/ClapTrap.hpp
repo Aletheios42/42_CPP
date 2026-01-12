@@ -10,11 +10,11 @@ class ClapTrap {
         int _attackDamage;
 
     public:
-        ClapTrap();                               // Default constructor
+        ClapTrap();
         ClapTrap(const std::string& name);
-        ClapTrap(const ClapTrap& other);          // Copy constructor
-        ClapTrap& operator=(const ClapTrap& rhs); // Copy assignment
-        ~ClapTrap();                              // Destructor
+        ClapTrap(const ClapTrap& other);
+        ClapTrap& operator=(const ClapTrap& rhs);
+        ~ClapTrap();
 
         virtual void attack(const std::string& target);
         void takeDamage(unsigned int amount);
