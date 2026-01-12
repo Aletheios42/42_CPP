@@ -75,11 +75,10 @@ Fixed   Fixed::operator*(Fixed const &fixed)
 Fixed Fixed::operator/(Fixed const &fixed) {
     Fixed result;
     int64_t dividend = (_rawValue) << _fractionalBits;
-    int64_t divisor = (fixed._rawValue);
+    int64_t divisor = (fixed.getRawBits());
     result.setRawBits((int)(dividend / divisor));
     return result;
 }
-
 
 bool Fixed::operator==(Fixed const &fixed)  const {
     return this->_rawValue == fixed._rawValue;
@@ -122,7 +121,6 @@ Fixed Fixed::operator--(int) {
     return tmp;
 }
 
-
 Fixed &Fixed::min(Fixed &f1, Fixed &f2) {
     return (f1 < f2 ? f1 : f2);
 }
@@ -138,4 +136,3 @@ Fixed &Fixed::max(Fixed &f1, Fixed &f2) {
 const Fixed &Fixed::max(const Fixed &f1, const Fixed &f2) {
     return (f1 > f2 ? f1 : f2);
 }
-

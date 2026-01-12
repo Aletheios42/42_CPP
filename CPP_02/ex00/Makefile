@@ -4,7 +4,7 @@ CXX=c++
 CXXFLAGS= -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES= main.cpp 	\
-		   Fixed.cpp
+	   Fixed.cpp
 SRC_DIR=./Src/
 SRC=$(addprefix $(SRC_DIR), $(SRC_FILES))
 
@@ -18,11 +18,11 @@ INC=$(addprefix $(INC_DIR), $(INC_FILES))
 all: $(BIN)
 
 $(BIN): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(BIN)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(BIN)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.cpp $(INC)
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)

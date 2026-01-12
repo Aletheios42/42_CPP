@@ -14,7 +14,8 @@ Point::Point(const Point& other) : _x(other._x), _y(other._y) {
 
 Point& Point::operator=(const Point& other) {
     std::cout << "Assignment operator called" << std::endl;
-    // No-op, const members can't be assigned
+    this->_x = other.getX();
+    this->_y = other.getY();
     return *this;
 }
 
